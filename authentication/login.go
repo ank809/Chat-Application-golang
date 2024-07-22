@@ -60,6 +60,11 @@ func Login(c *gin.Context) {
 		})
 		return
 	}
+	http.SetCookie(c.Writer, &http.Cookie{
+		Name:    "token",
+		Value:   token,
+		Expires: time.Now().Add(time.Minute * 10),
+	})
 	c.JSON(http.StatusOK, gin.H{
 		"status": "success",
 		"token":  token,
@@ -70,6 +75,7 @@ func generateJWT(user models.User) (string, error) {
 	jwtKey := os.Getenv("JWT_KEY")
 	claims := models.Claims{
 		Email: user.Email,
+		Name:  user.Name,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Minute * 10).Unix(),
 		},
