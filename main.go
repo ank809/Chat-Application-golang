@@ -15,6 +15,7 @@ func main() {
 	r.POST("/signup", authentication.Signup)
 	r.GET("/login", authentication.Login)
 	r.POST("/createRoom", ws.CreateRoom)
+	r.GET("/joinRoom", ws.JoinRoom)
 
 	if err := http.ListenAndServe(":8081", r); err != nil {
 		log.Println(err)
