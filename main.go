@@ -19,6 +19,7 @@ func main() {
 	r.POST("/createGroup", ws.CreateGroup)
 	r.POST("/adduser", ws.AddUserToGroup)
 	r.GET("/deleteuser", ws.DeleteUserFromGroup)
+	r.GET("/joingroupchat", ws.JoinGroupChat)
 
 	if err := http.ListenAndServe(":8081", r); err != nil {
 		log.Println(err)
