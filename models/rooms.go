@@ -8,7 +8,6 @@ type Room struct {
 	ID           primitive.ObjectID `bson:"_id"`
 	RoomID       string             `json:"roomID"  binding:"required"`
 	Participants []string           `json:"participants"`
-	Messages     []string           `json:"messages"`
 }
 
 type RoomParticipant struct {

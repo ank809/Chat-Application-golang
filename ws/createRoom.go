@@ -35,7 +35,6 @@ func CreateRoom(c *gin.Context) {
 		ID:           primitive.NewObjectID(),
 		RoomID:       helpers.GenerateRoomId(),
 		Participants: []string{roomparticipant.User1, roomparticipant.User2},
-		Messages:     []string{},
 	}
 
 	_, err = coll.InsertOne(context.TODO(), room)
